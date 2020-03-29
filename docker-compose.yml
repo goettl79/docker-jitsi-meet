@@ -7,9 +7,9 @@ services:
       - '8000:80'
       - '8443:443'
     volumes:
-      - ./jitsi-meet.cfg/web:/config
-      - ./jitsi-meet.cfg/web/letsencrypt:/etc/letsencrypt
-      - ./jitsi-meet.cfg/transcripts:/usr/share/jitsi-meet/transcripts
+      - ${WEBAPP_STORAGE_HOME}/jitsi-meet.cfg/web:/config
+      - ${WEBAPP_STORAGE_HOME}/jitsi-meet.cfg/web/letsencrypt:/etc/letsencrypt
+      - ${WEBAPP_STORAGE_HOME}/jitsi-meet.cfg/transcripts:/usr/share/jitsi-meet/transcripts
     environment:
       - ENABLE_AUTH
       - ENABLE_GUESTS
@@ -42,7 +42,7 @@ services:
       - '5347'
       - '5280'
     volumes:
-      - ./jitsi-meet.cfg/prosody:/config
+      - ${WEBAPP_STORAGE_HOME}/jitsi-meet.cfg/prosody:/config
     environment:
       - AUTH_TYPE
       - ENABLE_AUTH
@@ -84,7 +84,7 @@ services:
   jicofo:
     image: jitsi/jicofo
     volumes:
-      - ./jitsi-meet.cfg/jicofo:/config
+      - ${WEBAPP_STORAGE_HOME}/jitsi-meet.cfg/jicofo:/config
     environment:
       - ENABLE_AUTH
       - XMPP_DOMAIN
@@ -111,7 +111,7 @@ services:
       - '10000:10000/udp'
       - '4443:4443'
     volumes:
-      - ./jitsi-meet.cfg/jvb:/config
+      - ${WEBAPP_STORAGE_HOME}/jitsi-meet.cfg/jvb:/config
     environment:
       - DOCKER_HOST_ADDRESS
       - XMPP_AUTH_DOMAIN
