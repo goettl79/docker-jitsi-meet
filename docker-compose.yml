@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-  # Frontend
   web:
     image: jitsi/web
     ports:
@@ -42,7 +41,6 @@ services:
         aliases:
           - ${XMPP_DOMAIN}
 
-  # XMPP server
   prosody:
     image: jitsi/prosody
     expose:
@@ -105,7 +103,6 @@ services:
         aliases:
           - ${XMPP_SERVER}
 
-  # Focus component
   jicofo:
     image: jitsi/jicofo
     volumes:
@@ -130,7 +127,6 @@ services:
     networks:
       meet.jitsi:
 
-  # Video bridge
   jvb:
     image: jitsi/jvb
     ports:
@@ -157,6 +153,5 @@ services:
     networks:
       meet.jitsi:
 
-# Custom network so all services can communicate using a FQDN
 networks:
   meet.jitsi:
